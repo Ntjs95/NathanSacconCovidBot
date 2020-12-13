@@ -169,10 +169,10 @@ export default class Game {
                 if (sInput.toLowerCase().match("yes")) {
                     this.stateCur = GameState.SYMPTOMS;
                     this.runnynose = true;
-                    sReply = "When did your symptoms start? In the last.. DAY or THREE DAYS or WEEK or TWO WEEKS";
+                    sReply = "When did your symptoms start? In the last.. DAY or WEEK or TWO WEEKS";
                 } else if (sInput.toLowerCase().match("no")) {
                     if (this.fever || this.cough || this.shortbreath || this.sorethroat) {
-                        sReply = "When did your symptoms start? In the last.. DAY or THREE DAYS or WEEK or TWO WEEKS";
+                        sReply = "When did your symptoms start? In the last.. DAY or WEEK or TWO WEEKS";
                         this.stateCur = GameState.SYMPTOMS;
                     } else if (this.age > 70) {
                         this.stateCur = GameState.BEGIN;
@@ -190,11 +190,7 @@ export default class Game {
                     this.symptomTime = "day";
                     sReply = "Respond to this to see your assessment results.";
                     this.stateCur = GameState.ASSESSMENTRESULT;
-                } else if (sInput.toLowerCase().match("three days")) {
-                    this.symptomTime = "three days";
-                    sReply = "Respond to this to see your assessment results.";
-                    this.stateCur = GameState.ASSESSMENTRESULT;
-                } else if (sInput.toLowerCase().match("week")) {
+                }  else if (sInput.toLowerCase().match("week")) {
                     this.symptomTime = "week";
                     sReply = "Respond to this to see your assessment results.";
                     this.stateCur = GameState.ASSESSMENTRESULT;
@@ -203,7 +199,7 @@ export default class Game {
                     sReply = "Respond to this to see your assessment results.";
                     this.stateCur = GameState.ASSESSMENTRESULT;
                 } else {
-                    sReply = "You must choose DAY or THREE DAYS or WEEK or TWO WEEKS";
+                    sReply = "You must choose DAY or WEEK or TWO WEEKS";
                 }
                 break;
             case GameState.ASSESSMENTRESULT:
