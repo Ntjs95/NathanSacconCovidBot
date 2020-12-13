@@ -43,6 +43,18 @@ export default class Game {
         switch (this.stateCur) {
             case GameState.BEGIN:
                 sReply = "Welcome to the COVID-19 information app. To get started respond to this text.";
+                // Reset Values
+                this.age = -1;
+                this.fever = false;
+                this.cough = false;
+                this.shortbreath = false;
+                this.sorethroat = false;
+                this.runnynose = false;
+                this.headache = false;
+                this.symptomTime = "";
+                this.healthcardNum = "";
+                this.healthcardName = "";
+                this.healthcardDate = "";
                 if (sInput) {
                     this.stateCur = GameState.PRECHOOSE;
                 }
@@ -190,7 +202,7 @@ export default class Game {
                     this.symptomTime = "day";
                     sReply = "Respond to this to see your assessment results.";
                     this.stateCur = GameState.ASSESSMENTRESULT;
-                }  else if (sInput.toLowerCase().match("week")) {
+                } else if (sInput.toLowerCase().match("week")) {
                     this.symptomTime = "week";
                     sReply = "Respond to this to see your assessment results.";
                     this.stateCur = GameState.ASSESSMENTRESULT;
@@ -204,22 +216,22 @@ export default class Game {
                 break;
             case GameState.ASSESSMENTRESULT:
                 sReply = "Based on your symptoms of ";
-                if(this.fever){
+                if (this.fever) {
                     sReply = sReply + "-fever "
                 }
-                if(this.cough){
+                if (this.cough) {
                     sReply = sReply + "-cough "
                 }
-                if(this.shortbreath){
+                if (this.shortbreath) {
                     sReply = sReply + "-shortness of breath "
                 }
-                if(this.sorethroat){
+                if (this.sorethroat) {
                     sReply = sReply + "-sore throat "
                 }
-                if(this.runnynose){
+                if (this.runnynose) {
                     sReply = sReply + "-runny nose "
                 }
-                if(this.headache){
+                if (this.headache) {
                     sReply = sReply + "-headache "
                 }
                 sReply = sReply + "that have developed in the last " + this.symptomTime + ". We recommend you get tested. Visit your local testing center as soon as possible. Thank you for using COVID bot."
